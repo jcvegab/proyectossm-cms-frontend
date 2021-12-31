@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    // "baseUrl": "./",
+    // "paths": {
+    //   "@components/*": ["component/*"],
+    //   "@config/*": ["config/*"],
+    //   "@constants/*": ["constants/*"],
+    //   "@interfaces/*": ["interfaces/*"],
+    //   "@styles/*": ["styles/*"],
+    //   "@store/*": ["store/*"]
+    // },
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": true,
+    "incremental": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
