@@ -69,11 +69,11 @@ export const emotionTheme = {
   // },
 };
 
-// declare module '@mui/material/styles' {
-//  export interface Theme {}
-//  // allow configuration using `createTheme`
-//  interface ThemeOptions {}
-// }
+declare module '@mui/material/styles' {
+  // export interface Theme {}
+  // allow configuration using `createTheme`
+  // interface ThemeOptions {}
+}
 
 export const muiTheme = createTheme({
   palette: {
