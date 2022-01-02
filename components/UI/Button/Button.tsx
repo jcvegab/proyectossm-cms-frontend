@@ -1,57 +1,32 @@
-import React, { FC, MouseEvent, ReactNode } from 'react';
-
-// import styled from '@emotion/styled';
-// import Button from '@mui/material/Button';
+import styled from '@emotion/styled';
+import ButtonUI from '@mui/material/Button';
 
 interface Props {
-  children: ReactNode | ReactNode[];
-  type?: string;
-  size?: 'large' | 'middle' | 'small';
-  disabled?: boolean;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  kind?: 'primary' | 'secondary' | 'ghost';
+  size?: 'large' | 'medium' | 'small';
 }
 
-// const StyledButton = styled(ButtonUI)`
-//   padding: 0 ${BtnSize.padding}px;
-//   font-family: Montserrat;
-//   font-size: ${BtnSize.fontSize}px;
-//   line-height: ${BtnSize.lineHeight}px;
-//   background-color: ${BtnType.bgColor};
-//   border: 1px solid ${BtnType.border};
-//   color: ${BtnType.color};
-//   border-radius: 4px;
-//   cursor: pointer;
-//   transition: 0.3s;
-//   user-select: none;
-//   &:hover {
-//     ${BtnType === buttonType.ghost
-//       ? 'background-color: rgba(27, 61, 94, 0.082);'
-//       : 'background-color: rgb(27, 61, 94, 0.85)'}
-//   }
-//   &:focus {
-//     outline: none;
-//   }
-// `;
-
-const Button: FC<Props> = (props: Props) => {
-  const {
-    // children,
-    // type = 'primary',
-    // size = 'middle',
-    // disabled = false,
-  } = props;
-  // const { onClick } = props;
-  return (
-    // <StyledButton
-    //   type={type}
-    //   size={size}
-    //   disabled={disabled}
-    //   onClick={onClick}
-    // >
-    //   {children}
-    // </StyledButton>);
-    <></>
-  );
-};
+const Button = styled(ButtonUI)<Props>(
+  ({ kind = 'primary', size = 'medium', theme }) => `
+  padding: 0 ${theme.button.size[size].padding}px;
+  font-family: Montserrat;
+  font-size: ${theme.button.size[size].fontSize}px;
+  line-height: ${theme.button.size[size].lineHeight}px;
+  background-color: ${theme.button.type[kind].bgColor};
+  border: 1px solid ${theme.button.type[kind].borderColor};
+  color: ${theme.button.type[kind].color};
+  text-transform: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+  &:hover {
+    background-color: ${theme.button.type[kind].hoverBgColor};
+  }
+  &:focus {
+    outline: none;
+  }
+`,
+);
 
 export default Button;

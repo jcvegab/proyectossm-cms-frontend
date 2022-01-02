@@ -1,19 +1,22 @@
 import { Global, ThemeProvider } from '@emotion/react';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import { Provider } from 'react-redux';
 
-import store from '../store';
-import { globalStyles } from '../styles/global';
-import { theme } from '../styles/theme';
+import store from '@store/index';
+import { globalStyles } from '@styles/global';
+import { emotionTheme, muiTheme } from '@styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
         <Global styles={globalStyles} />
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <MuiThemeProvider theme={muiTheme}>
+          <ThemeProvider theme={emotionTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </MuiThemeProvider>
       </Provider>
     </>
   );

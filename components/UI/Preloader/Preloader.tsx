@@ -7,18 +7,20 @@ interface Props {
   overlap?: boolean;
 }
 
-const PreloaderBox = styled.div<Props>`
+const PreloaderBox = styled.div<Props>(
+  ({ overlap }) => `
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   margin: 0,
-  width: ${props => (props.overlap ? '100vh' : '100%')};
-  height: ${props => (props.overlap ? 'vh' : '%')};
-  position: ${props => (props.overlap ? 'fixed' : 'relative')};
-  minHeight: ${props => props.overlap || 180};
-  top: ${props => props.overlap && 0};
-  left: ${props => props.overlap && 0};
-`;
+  width: ${overlap ? '100vh' : '100%'};
+  height: ${overlap ? 'vh' : '%'};
+  position: ${overlap ? 'fixed' : 'relative'};
+  minHeight: ${overlap || 180};
+  top: ${overlap && 0};
+  left: ${overlap && 0};
+`,
+);
 
 const Preloader: FC<Props> = (props: Props) => {
   const { overlap = false } = props;

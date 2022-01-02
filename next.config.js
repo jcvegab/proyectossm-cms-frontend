@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['images.unsplash.com'],
+  },
   env: {
     REACT_APP_FS_CONF_API_KEY: process.env.FS_API_KEY,
     REACT_APP_FS_CONF_AUTH_DOMAIN: process.env.FS_AUTH_DOMAIN,
@@ -10,4 +13,4 @@ module.exports = {
     REACT_APP_FS_CONF_APP_ID: process.env.FS_APP_ID,
     REACT_APP_FS_CONF_MEASUREMENT_ID: process.env.FS_MEASUREMENT_ID,
   },
-}
+};
