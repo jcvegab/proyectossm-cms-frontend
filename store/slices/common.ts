@@ -1,89 +1,86 @@
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
-import { EMPTY_DIALOG } from '../../constants/dialogs'
-import { EMPTY_PAGE } from '../../constants/pages'
-import { EMPTY_TAB } from '../../constants/tabs'
-import { Dialog, CommonStore, Page, Tab } from '../../interfaces/common'
-import { AppDispatch, AppThunk } from '../index'
-import { RootState } from '../rootReducer'
+import { EMPTY_DIALOG } from '../../constants/dialogs';
+import { EMPTY_PAGE } from '../../constants/pages';
+import { EMPTY_TAB } from '../../constants/tabs';
+import { Dialog, CommonStore, Page, Tab } from '../../interfaces/common';
+import { AppDispatch, AppThunk } from '../index';
+import { RootState } from '../rootReducer';
 
 const initialState: CommonStore = {
   modal: { ...EMPTY_DIALOG },
   drawer: { ...EMPTY_DIALOG },
   page: { ...EMPTY_PAGE },
   tab: { ...EMPTY_TAB },
-}
+};
 
 const commonSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
     setOpenModal: (state, action: PayloadAction<Dialog>) => {
-      state.modal = action.payload
+      state.modal = action.payload;
     },
     setOpenDrawer: (state, action: PayloadAction<Dialog>) => {
-      state.drawer = action.payload
+      state.drawer = action.payload;
     },
     setSelectedPage: (state, action: PayloadAction<Page>) => {
-      state.page = action.payload
+      state.page = action.payload;
     },
     setSelectedTab: (state, action: PayloadAction<Tab>) => {
-      state.tab = action.payload
+      state.tab = action.payload;
     },
   },
-})
+});
 
 export const openModal =
   (modal: Dialog): AppThunk =>
   (dispatch: AppDispatch) => {
-    const { actions } = commonSlice
-    dispatch(actions.setOpenModal(modal))
-  }
+    const { actions } = commonSlice;
+    dispatch(actions.setOpenModal(modal));
+  };
 
 export const closeModal = (): AppThunk => (dispatch: AppDispatch) => {
-  const { actions } = commonSlice
-  dispatch(actions.setOpenModal({ ...EMPTY_DIALOG }))
-}
+  const { actions } = commonSlice;
+  dispatch(actions.setOpenModal({ ...EMPTY_DIALOG }));
+};
 
 export const openDrawer =
   (drawer: Dialog): AppThunk =>
   (dispatch: AppDispatch) => {
-    const { actions } = commonSlice
-    dispatch(actions.setOpenDrawer(drawer))
-  }
+    const { actions } = commonSlice;
+    dispatch(actions.setOpenDrawer(drawer));
+  };
 
 export const closeDrawer = (): AppThunk => (dispatch: AppDispatch) => {
-  const { actions } = commonSlice
-  dispatch(actions.setOpenDrawer({ ...EMPTY_DIALOG }))
-}
+  const { actions } = commonSlice;
+  dispatch(actions.setOpenDrawer({ ...EMPTY_DIALOG }));
+};
 
 export const setPage =
   (page: Page): AppThunk =>
   (dispatch: AppDispatch) => {
-    const { actions } = commonSlice
-    dispatch(actions.setSelectedPage(page))
-  }
+    const { actions } = commonSlice;
+    dispatch(actions.setSelectedPage(page));
+  };
 
 export const setTab =
   (tab: Tab): AppThunk =>
   (dispatch: AppDispatch) => {
-    const { actions } = commonSlice
-    dispatch(actions.setSelectedTab(tab))
-  }
+    const { actions } = commonSlice;
+    dispatch(actions.setSelectedTab(tab));
+  };
 
-const selectState = (state: RootState) => state['common']
+const selectState = (state: RootState) => state['common'];
 
-export const getCommonModal = createSelector(
-  selectState,
-  (state) => state.modal
-)
+export const getCommonModal = createSelector(selectState, state => state.modal);
 export const getCommonDrawer = createSelector(
   selectState,
-  (state) => state.drawer
-)
-export const getCommonPage = createSelector(selectState, (state) => state.page)
-export const getCommonTab = createSelector(selectState, (state) => state.tab)
+  state => state.drawer,
+);
+export const getCommonPage = createSelector(selectState, state => state.page);
+export const getCommonTab = createSelector(selectState, state => state.tab);
 
 export const useCommonStore = (): CommonStore => {
   return {
@@ -91,7 +88,7 @@ export const useCommonStore = (): CommonStore => {
     drawer: useSelector(getCommonDrawer),
     page: useSelector(getCommonPage),
     tab: useSelector(getCommonTab),
-  }
-}
+  };
+};
 
-export default commonSlice.reducer
+export default commonSlice.reducer;
