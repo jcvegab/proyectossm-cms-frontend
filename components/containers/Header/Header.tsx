@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ImSearch } from 'react-icons/im';
 import { RiShoppingCart2Line } from 'react-icons/ri';
 
 import Button from '@components/UI/Button';
@@ -34,9 +35,13 @@ const PrimaryHeader = styled.div`
   }
 `;
 
-const SecondaryHeader = styled.div`
+const SecondaryHeader = styled.div(
+  ({ theme }) => `
   height: 50px;
-  background-color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${theme.palette.primary.main};
 
   div {
     margin: 0 auto;
@@ -47,7 +52,21 @@ const SecondaryHeader = styled.div`
     justify-content: center;
     color: white;
   }
-`;
+
+  div > ${Button} {
+    height: 50px;
+    border-radius: 0;
+  }
+`,
+);
+
+const MenuLinks = [
+  { label: 'Inicio', link: '/' },
+  { label: 'Nosotros', link: '/about-us' },
+  { label: 'Gerencias', link: '/managements' },
+  { label: 'Proyectos', link: '/projects' },
+  { label: 'Contacto', link: '/contact' },
+];
 
 const Header: FC<Props> = (props: Props) => {
   const {} = props;
@@ -77,10 +96,10 @@ const Header: FC<Props> = (props: Props) => {
           {(role && (
             <>
               <Link href='/profile' passHref>
-                <Button variant='outlined'>Mi perfil</Button>
+                <Button kind='ghost'>Mi perfil</Button>
               </Link>
-              <Link href='/logout' passHref>
-                <Button variant='contained'>Salir</Button>
+              <Link href='/' passHref>
+                <Button>Salir</Button>
               </Link>
             </>
           )) || (
@@ -89,7 +108,7 @@ const Header: FC<Props> = (props: Props) => {
                 <Button kind='ghost'>Regístrate</Button>
               </Link>
               <Link href='/login' passHref>
-                <Button variant='contained'>Ingresa</Button>
+                <Button>Ingresa</Button>
               </Link>
             </>
           )}
@@ -105,7 +124,14 @@ const Header: FC<Props> = (props: Props) => {
       </PrimaryHeader>
       <SecondaryHeader>
         <div>
-          <p>Secondary Header</p>
+          {MenuLinks.map(({ label, link }, index) => (
+            <Link href={link} passHref key={index}>
+              <Button>{label}</Button>
+            </Link>
+          ))}
+          <Button>
+            <ImSearch />
+          </Button>
         </div>
       </SecondaryHeader>
     </header>
