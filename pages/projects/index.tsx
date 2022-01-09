@@ -36,6 +36,7 @@ const ForCard = (
     species, ranging across all continents except Antarctica. Lizards are
     a widespread group of squamate reptiles, with over 6,000 species,
     ranging across all continents except Antarctica.'
+    share
   />
 );
 
@@ -50,7 +51,7 @@ const CoursePage: NextPage = () => {
       <Header />
       <StyledMain>
         <H1>Nuestros Proyectos</H1>
-        <CardGridContainer>{Array(12).fill(ForCard)}</CardGridContainer>
+        <CardGridContainer>{Array(20).fill(ForCard)}</CardGridContainer>
       </StyledMain>
       <Footer />
     </div>

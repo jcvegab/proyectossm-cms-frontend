@@ -11,6 +11,7 @@ interface Props {
   img_src: string;
   title: string;
   body: string;
+  share?: boolean;
 }
 
 const StyledCard = styled(MuiCard)(
@@ -46,7 +47,7 @@ const StyledCard = styled(MuiCard)(
 );
 
 const Card: FC<Props> = (props: Props) => {
-  const { img_alt, img_src, title, body } = props;
+  const { img_alt, img_src, title, body, share = false } = props;
   return (
     <StyledCard>
       <CardMedia component='img' alt={img_alt} height='140' image={img_src} />
@@ -59,9 +60,11 @@ const Card: FC<Props> = (props: Props) => {
           <Button size='small'>
             <BtnText>Más información</BtnText>
           </Button>
-          <Button size='small'>
-            <BtnText>Comparte</BtnText>
-          </Button>
+          {share && (
+            <Button size='small'>
+              <BtnText>Comparte</BtnText>
+            </Button>
+          )}
         </div>
       </div>
     </StyledCard>
