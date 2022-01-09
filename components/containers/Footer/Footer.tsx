@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import styled from '@emotion/styled';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import IconButton from '@components/UI/IconButton';
@@ -26,9 +27,14 @@ const StyledFooter = styled.footer(
   }
 
   .info__footer {
-    padding: 15px 0;
+    padding: 30px 0;
     display: grid;
     grid-template-columns: 3fr 2fr 2fr 1fr;
+    .org_info_footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
   }
 
   .info-section__footer {
@@ -123,7 +129,17 @@ const Footer: FC<Props> = (props: Props) => {
     <StyledFooter>
       <div className='container__footer'>
         <div className='info__footer'>
-          <div>
+          <div className='org_info_footer'>
+            <Link href='/'>
+              <a>
+                <Image
+                  src='/psm-white.svg'
+                  alt='Proyectos San Marcos'
+                  width={200}
+                  height={80}
+                />
+              </a>
+            </Link>
             <span>
               Proyectos San Marcos es un equipo multidisciplinario de la
               Universidad Nacional Mayor de San Marcos que adopta, difunde y
