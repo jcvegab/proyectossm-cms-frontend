@@ -148,7 +148,9 @@ const Footer: FC<Props> = (props: Props) => {
             <div>
               {SocialLinks.map(({ link, icon }, index) => (
                 <Link key={index} href={link} passHref>
-                  <IconButton icon={icon} fill='white' iconsize={20} />
+                  <a>
+                    <IconButton icon={icon} fill='white' iconsize={20} />
+                  </a>
                 </Link>
               ))}
             </div>
