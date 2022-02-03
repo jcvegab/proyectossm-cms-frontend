@@ -32,7 +32,7 @@ import {
 export type IconListType = keyof typeof IconList;
 
 interface Props extends IconButtonProps {
-  icon: keyof typeof IconList;
+  icon: IconListType;
   fill?: string;
   stroke?: string;
   iconsize?: number;

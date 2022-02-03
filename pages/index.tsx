@@ -5,8 +5,6 @@ import Image from 'next/image';
 
 import Button from '@components/UI/Button';
 import { H1 } from '@components/UI/Title';
-import Footer from '@components/containers/Footer';
-import Header from '@components/containers/Header';
 
 const StyledImage = styled(Image)``;
 
@@ -62,7 +60,6 @@ const Home: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header />
       <main>
         <Banner>
           <StyledImage
@@ -76,7 +73,6 @@ const Home: NextPage = () => {
           </div>
         </Banner>
       </main>
-      <Footer />
     </div>
   );
 };
