@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             layout='fill'
           />
           <div className='info__banner'>
-            <H1>¿Quieres saber más de nosotros?</H1>
+            <H1>¿Quieres saber más de PSM?</H1>
             <Button size='large'>Postula aquí</Button>
           </div>
         </Banner>
